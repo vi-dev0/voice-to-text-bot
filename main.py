@@ -58,11 +58,11 @@ async def show_stats(message: types.Message):
     total_requests = cursor.fetchone()[0]
     cursor.execute("SELECT COUNT(*) FROM stats WHERE date = DATE('now')")
     today_requests = cursor.fetchone()[0]
-    text = f"Статистика использования бота:\n" \
-           f"Всего пользователей: {total_users}\n" \
-           f"Пользователей сегодня: {today_users}\n" \
-           f"Всего запросов: {total_requests}\n" \
-           f"Запросов сегодня: {today_requests}"
+    text = f"📊 Статистика использования бота:\n" \
+           f" ├ Всего пользователей: {total_users}\n" \
+           f" ├ Пользователей сегодня: {today_users}\n" \
+           f" ├ Всего запросов: {total_requests}\n" \
+           f" └ Запросов сегодня: {today_requests}"
     await message.reply(text)
 
 if __name__ == '__main__':
