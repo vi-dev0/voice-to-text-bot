@@ -48,6 +48,16 @@ def record_stat(user_id):
     cursor.execute("INSERT INTO stats (user_id, date) VALUES (?, DATE('now'))", (user_id,))
     conn.commit()
 
+@dp.message_handler(commands=['help'])
+async def show_help(message: types.Message):
+    await message.answer(f"Что бы воспользоваться ботом, отправь/перешли ему голосовое сообщение и он его переведет в текст.\n" \
+                         f"Добавь бота в чат, назначь адмиинистратором и он будет переводить все голосовые сообщениея в чате в текст")
+    
+@dp.message_handler(commands=['info'])
+async def show_info(message: types.Message):
+    await message.answer(f"Бот создан автором канала @B4DCAT404\n"\
+                         f"По поводу вопросов или рекламы - @b4dcat404_support")
+
 @dp.message_handler(commands=['stats'])
 async def show_stats(message: types.Message):
     cursor.execute("SELECT COUNT(DISTINCT user_id) FROM stats")
