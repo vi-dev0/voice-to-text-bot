@@ -21,7 +21,7 @@ conn.commit()
 @dp.message_handler(content_types=types.ContentType.VOICE)
 async def process_voice_message(message: types.Message):
     voice_file = io.BytesIO()
-    await message.voice.download(destination=voice_file)
+    await message.voice.download(destination_file=voice_file)
     y, sr = librosa.load(voice_file, sr=16000)
     voice_file.close()
     voice_file = io.BytesIO()
